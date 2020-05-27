@@ -4,6 +4,7 @@ import 'package:newsapp/models/article_model.dart';
 
 import 'article_view.dart';
 
+//id instead of category...?
 class CategoryNews extends StatefulWidget {
   final String category;
   CategoryNews({this.category});

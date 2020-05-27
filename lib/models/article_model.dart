@@ -5,6 +5,8 @@ class ArticleModel {
   String url;
   String urlToImage;
   String content;
+  String source;
+  String publishedAt;
 
   ArticleModel({
     this.author,
@@ -13,5 +15,7 @@ class ArticleModel {
     this.url,
     this.urlToImage,
     this.content,
+    this.source,
+    this.publishedAt,
   });
 }

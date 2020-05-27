@@ -1,7 +1,8 @@
 import 'dart:convert';
-
 import 'package:newsapp/models/article_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+import 'package:newsapp/models/source_model.dart';
 
 //fetch all technology headlines
 class News {
@@ -24,8 +25,9 @@ class News {
             url: element['url'],
             urlToImage: element['urlToImage'],
             content: element['context'],
+            source: element['source']['name'],
+            publishedAt: element['publishedAt'],
           );
-
           news.add(articleModel);
         }
       });
@@ -39,7 +41,7 @@ class CategoryNewsClass {
 
   Future<void> getNews(String category) async {
     String url =
-        "http://newsapi.org/v2/top-headlines?category=$category&country=us&apiKey=ba6018a0c29b4508be8a24c16e933a85";
+        "http://newsapi.org/v2/top-headlines?sources=$category&apiKey=ba6018a0c29b4508be8a24c16e933a85";
 
     var response = await http.get(url);
 
@@ -59,6 +61,29 @@ class CategoryNewsClass {
 
           news.add(articleModel);
         }
+      });
+    }
+  }
+}
+
+//fetch tech sources
+class Sources {
+  List<SourceModel> sources = [];
+
+  Future<void> getSources() async {
+    String url =
+        "https://newsapi.org/v2/sources?category=technology&language=en&apiKey=ba6018a0c29b4508be8a24c16e933a85";
+
+    var response = await http.get(url);
+    var jsonData = jsonDecode(response.body);
+
+    if (jsonData['status'] == "ok") {
+      jsonData["sources"].forEach((element) {
+        SourceModel sourceModel = SourceModel(
+          name: element['name'],
+          description: element['description'],
+        );
+        sources.add(sourceModel);
       });
     }
   }

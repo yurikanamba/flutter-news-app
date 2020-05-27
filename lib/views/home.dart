@@ -10,6 +10,8 @@ import 'package:newsapp/helper/news.dart';
 import 'article_view.dart';
 import 'category_news.dart';
 
+import 'package:intl/intl.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -25,6 +27,7 @@ class _HomeState extends State<Home> {
   void initState() {
     //whenever screen opens, functions in here will be called
     super.initState();
+    //from data.dart
     categories = getCategories();
     getNews();
   }
@@ -78,6 +81,7 @@ class _HomeState extends State<Home> {
                             return CategoryTile(
                               imageUrl: categories[index].imageUrl,
                               categoryName: categories[index].categoryName,
+                              id: categories[index].id,
                             );
                           }),
                     ),
@@ -95,6 +99,8 @@ class _HomeState extends State<Home> {
                               title: articles[index].title,
                               description: articles[index].description,
                               url: articles[index].url,
+                              source: articles[index].source,
+                              publishedAt: articles[index].publishedAt,
                             );
                           }),
                     )
@@ -108,8 +114,8 @@ class _HomeState extends State<Home> {
 
 //each tile
 class CategoryTile extends StatelessWidget {
-  final String imageUrl, categoryName;
-  CategoryTile({this.imageUrl, this.categoryName});
+  final String imageUrl, categoryName, id;
+  CategoryTile({this.imageUrl, this.categoryName, this.id});
   @override
   Widget build(BuildContext context) {
     //when you click on widget, you can perform a function
@@ -119,7 +125,7 @@ class CategoryTile extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => CategoryNews(
-                      category: categoryName.toLowerCase(),
+                      category: id,
                     )));
       },
       child: Container(
@@ -160,12 +166,14 @@ class CategoryTile extends StatelessWidget {
 }
 
 class NewsTile extends StatelessWidget {
-  final String imageUrl, title, description, url;
+  final String imageUrl, title, description, url, source, publishedAt;
   NewsTile({
     @required this.imageUrl,
     @required this.title,
     @required this.description,
     @required this.url,
+    @required this.source,
+    @required this.publishedAt,
   });
 
   @override
@@ -204,6 +212,21 @@ class NewsTile extends StatelessWidget {
               description,
               style: TextStyle(
                 color: Colors.black54,
+              ),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              source,
+              style: TextStyle(
+                color: Colors.green,
+              ),
+            ),
+            Text(
+              publishedAt,
+              style: TextStyle(
+                color: Colors.red,
               ),
             ),
           ],
