@@ -1,18 +1,17 @@
-import 'package:cached_network_image/cached_network_image.dart';
+//import 'package:cached_network_image/cached_network_image.dart';
+//import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-//categories
+//sources
 import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/helper/data.dart';
+import 'category_news.dart';
 //news
 import 'package:newsapp/models/article_model.dart';
 import 'package:newsapp/helper/news.dart';
-
 import 'article_view.dart';
-import 'category_news.dart';
-
-import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
+  //override the class defined in Stateful Widget
   @override
   _HomeState createState() => _HomeState();
 }
@@ -45,16 +44,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("CC"),
-            Text(
-              "Interestings",
-              style: TextStyle(color: Colors.blue),
-            )
-          ],
-        ),
+        title: Text('TechInt ⌘ 💻', style: TextStyle(color: Colors.tealAccent)),
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -66,13 +56,15 @@ class _HomeState extends State<Home> {
             )
           : SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   children: <Widget>[
-                    /// Categories
+                    /// Sources
                     Container(
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 0, vertical: 16.0),
                       height: 70,
-                      padding: EdgeInsets.symmetric(horizontal: 0),
+                      //padding: EdgeInsets.symmetric(horizontal: 0),
                       child: ListView.builder(
                           itemCount: categories.length,
                           shrinkWrap: true,
@@ -82,13 +74,13 @@ class _HomeState extends State<Home> {
                               imageUrl: categories[index].imageUrl,
                               categoryName: categories[index].categoryName,
                               id: categories[index].id,
+                              color: categories[index].color,
                             );
                           }),
                     ),
 
-                    /// NewsTile
+                    /// All News
                     Container(
-                      padding: EdgeInsets.only(top: 16),
                       child: ListView.builder(
                           itemCount: articles.length,
                           shrinkWrap: true,
@@ -114,8 +106,8 @@ class _HomeState extends State<Home> {
 
 //each tile
 class CategoryTile extends StatelessWidget {
-  final String imageUrl, categoryName, id;
-  CategoryTile({this.imageUrl, this.categoryName, this.id});
+  final String imageUrl, categoryName, id, color;
+  CategoryTile({this.imageUrl, this.categoryName, this.id, this.color});
   @override
   Widget build(BuildContext context) {
     //when you click on widget, you can perform a function
@@ -134,12 +126,12 @@ class CategoryTile extends StatelessWidget {
           children: <Widget>[
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
-              child: CachedNetworkImage(
-                imageUrl: imageUrl,
-                width: 120,
-                height: 60,
-                fit: BoxFit.cover,
-              ),
+//              child: CachedNetworkImage(
+//                imageUrl: imageUrl,
+//                width: 120,
+//                height: 60,
+//                fit: BoxFit.cover,
+//              ),
             ),
             Container(
               //centers children in the container
@@ -148,14 +140,17 @@ class CategoryTile extends StatelessWidget {
               height: 60,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                color: Colors.black26,
+                color: Colors.tealAccent[700],
               ),
-              child: Text(
-                categoryName,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500),
+              child: Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: Text(
+                  categoryName,
+                  style: TextStyle(
+                      color: Colors.grey[900],
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             )
           ],
@@ -188,7 +183,7 @@ class NewsTile extends StatelessWidget {
                     )));
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 16),
+        margin: EdgeInsets.only(bottom: 25),
         child: Column(
           children: <Widget>[
             ClipRRect(
@@ -201,7 +196,7 @@ class NewsTile extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black87,
+                color: Colors.grey[300],
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -211,24 +206,45 @@ class NewsTile extends StatelessWidget {
             Text(
               description,
               style: TextStyle(
-                color: Colors.black54,
+                color: Colors.grey[400],
               ),
             ),
             SizedBox(
               height: 8,
             ),
-            Text(
-              source,
-              style: TextStyle(
-                color: Colors.green,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                alignment: Alignment.center,
+                width: 150,
+                height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  color: Colors.tealAccent[700],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: Text(
+                    source,
+                    style: TextStyle(
+                        color: Colors.grey[900],
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
               ),
-            ),
-            Text(
-              publishedAt,
-              style: TextStyle(
-                color: Colors.red,
-              ),
-            ),
+            )
+//            Text(
+//              source,
+//              style:
+//                  TextStyle(color: Colors.white, backgroundColor: Colors.green),
+//            ),
+//            Text(
+//              publishedAt,
+//              style: TextStyle(
+//                color: Colors.red,
+//              ),
+//            ),
           ],
         ),
       ),

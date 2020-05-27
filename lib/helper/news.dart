@@ -18,6 +18,7 @@ class News {
     if (jsonData['status'] == "ok") {
       jsonData["articles"].forEach((element) {
         if (element["urlToImage"] != null && element["description"] != null) {
+          //pass into Article Model Class
           ArticleModel articleModel = ArticleModel(
             title: element['title'],
             author: element['author'],
@@ -35,7 +36,7 @@ class News {
   }
 }
 
-//fetch news based on category
+//fetch news based on source
 class CategoryNewsClass {
   List<ArticleModel> news = [];
 

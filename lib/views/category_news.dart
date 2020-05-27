@@ -37,26 +37,7 @@ class _CategoryNews extends State<CategoryNews> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("CC"),
-            Text(
-              "Interestings",
-              style: TextStyle(color: Colors.blue),
-            ),
-          ],
-        ),
-        //to indent the title text so it is centered
-        //not best practice but added an icon and set it's opacity to 0
-        actions: <Widget>[
-          Opacity(
-            opacity: 0,
-            child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Icon(Icons.save)),
-          ),
-        ],
+        title: Text('TechInt ⌘ 💻', style: TextStyle(color: Colors.tealAccent)),
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -115,7 +96,7 @@ class NewsTile extends StatelessWidget {
                     )));
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 16),
+        margin: EdgeInsets.only(bottom: 25),
         child: Column(
           children: <Widget>[
             ClipRRect(
@@ -128,7 +109,7 @@ class NewsTile extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black87,
+                color: Colors.grey[300],
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -138,7 +119,7 @@ class NewsTile extends StatelessWidget {
             Text(
               description,
               style: TextStyle(
-                color: Colors.black54,
+                color: Colors.grey[400],
               ),
             ),
           ],

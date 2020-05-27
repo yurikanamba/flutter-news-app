@@ -3,4 +3,5 @@ class CategoryModel {
   String categoryName;
   String description;
   String imageUrl;
+  String color;
 }

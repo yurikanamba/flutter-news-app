@@ -11,6 +11,7 @@ List<CategoryModel> getCategories() {
       "The PC enthusiast's resource. Power users and the tools they love, without computing religion.";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80";
+  categoryModel.color = "redAccent";
   category.add(categoryModel);
 
   //2
@@ -21,6 +22,7 @@ List<CategoryModel> getCategories() {
       "Providing breaking cryptocurrency news - focusing on Bitcoin, Ethereum, ICOs, blockchain technology, and smart contracts.";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80";
+  categoryModel.color = "pinkAccent";
   category.add(categoryModel);
 
   //3
@@ -31,6 +33,7 @@ List<CategoryModel> getCategories() {
       "Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics.";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80";
+  categoryModel.color = "purpleAccent";
   category.add(categoryModel);
 
   //4
@@ -41,6 +44,7 @@ List<CategoryModel> getCategories() {
       "Hacker News is a social news website focusing on computer science and entrepreneurship. It is run by Paul Graham's investment fund and startup incubator, Y Combinator. In general, content that can be submitted is defined as \"anything that gratifies one's intellectual curiosity\".";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80";
+  categoryModel.color = "indigoAccent";
   category.add(categoryModel);
 
   //5
@@ -51,6 +55,7 @@ List<CategoryModel> getCategories() {
       "Get the latest independent tech news, reviews and analysis from Recode with the most informed and respected journalists in technology and media.";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80";
+  categoryModel.color = "blueAccent";
   category.add(categoryModel);
 
   //6
@@ -61,6 +66,7 @@ List<CategoryModel> getCategories() {
       "TechCrunch is a leading technology media property, dedicated to obsessively profiling startups, reviewing new Internet products, and breaking tech news.";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80";
+  categoryModel.color = "cyanAccent";
   category.add(categoryModel);
 
   //7
@@ -71,6 +77,7 @@ List<CategoryModel> getCategories() {
       "The latest technology news and reviews, covering computing, home entertainment systems, gadgets and more.";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80";
+  categoryModel.color = "greenAccent";
   category.add(categoryModel);
 
   categoryModel = new CategoryModel();
@@ -80,6 +87,7 @@ List<CategoryModel> getCategories() {
       "The latest technology news and reviews, covering computing, home entertainment systems, gadgets and more.";
   categoryModel.imageUrl =
       "The Next Web is one of the world’s largest online publications that delivers an international perspective on the latest news about Internet technology, business and culture.";
+  categoryModel.color = "yellowAccent";
   category.add(categoryModel);
 
   categoryModel = new CategoryModel();
@@ -89,6 +97,7 @@ List<CategoryModel> getCategories() {
       "The Verge covers the intersection of technology, science, art, and culture.";
   categoryModel.imageUrl =
       "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80";
+  categoryModel.color = "amberAccent";
   category.add(categoryModel);
 
   categoryModel = new CategoryModel();
@@ -98,6 +107,7 @@ List<CategoryModel> getCategories() {
       "The latest technology news and reviews, covering computing, home entertainment systems, gadgets and more.";
   categoryModel.imageUrl =
       "Wired is a monthly American magazine, published in print and online editions, that focuses on how emerging technologies affect culture, the economy, and politics.";
+  categoryModel.color = "orangeAccent";
   category.add(categoryModel);
 
   return category;

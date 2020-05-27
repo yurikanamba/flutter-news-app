@@ -17,26 +17,7 @@ class _ArticleViewState extends State<ArticleView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("CC"),
-            Text(
-              "Interestings",
-              style: TextStyle(color: Colors.blue),
-            ),
-          ],
-        ),
-        //to indent the title text so it is centered
-        //not best practice but added an icon and set it's opacity to 0
-        actions: <Widget>[
-          Opacity(
-            opacity: 0,
-            child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Icon(Icons.save)),
-          ),
-        ],
+        title: Text('TechInt ⌘ 💻', style: TextStyle(color: Colors.tealAccent)),
         centerTitle: true,
         elevation: 0.0,
       ),
