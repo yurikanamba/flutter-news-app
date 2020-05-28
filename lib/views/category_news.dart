@@ -3,16 +3,19 @@ import 'package:newsapp/helper/news.dart';
 import 'package:newsapp/models/article_model.dart';
 
 import 'article_view.dart';
+//spinner
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-//id instead of category...?
 class CategoryNews extends StatefulWidget {
-  final String category;
-  CategoryNews({this.category});
+  final String category, categoryName;
+  CategoryNews({this.category, this.categoryName});
 
   @override
+  //instantiating state object _CategoryNews
   _CategoryNews createState() => _CategoryNews();
 }
 
+//within state object, build data that can change over time
 class _CategoryNews extends State<CategoryNews> {
   List<ArticleModel> articles = new List<ArticleModel>();
   bool _loading = true;
@@ -28,6 +31,7 @@ class _CategoryNews extends State<CategoryNews> {
     CategoryNewsClass newsClass = CategoryNewsClass();
     await newsClass.getNews(widget.category);
     articles = newsClass.news;
+    //change the value of variable and updates the widget anytime it changes
     setState(() {
       _loading = false;
     });
@@ -44,7 +48,11 @@ class _CategoryNews extends State<CategoryNews> {
       body: _loading
           ? Center(
               child: Container(
-                child: CircularProgressIndicator(),
+                child: SpinKitFadingCircle(
+                  color: Colors.teal,
+                  size: 50.0,
+                ),
+                //CircularProgressIndicator(),
               ),
             )
           : SingleChildScrollView(
@@ -52,6 +60,7 @@ class _CategoryNews extends State<CategoryNews> {
               child: Container(
                 child: Column(
                   children: <Widget>[
+                    Text(widget.categoryName),
                     Container(
                       padding: EdgeInsets.only(top: 16),
                       child: ListView.builder(
@@ -64,6 +73,7 @@ class _CategoryNews extends State<CategoryNews> {
                               title: articles[index].title,
                               description: articles[index].description,
                               url: articles[index].url,
+                              source: articles[index].source,
                             );
                           }),
                     )
@@ -76,12 +86,13 @@ class _CategoryNews extends State<CategoryNews> {
 }
 
 class NewsTile extends StatelessWidget {
-  final String imageUrl, title, description, url;
+  final String imageUrl, title, description, url, source;
   NewsTile({
     @required this.imageUrl,
     @required this.title,
     @required this.description,
     @required this.url,
+    @required this.source,
   });
 
   @override

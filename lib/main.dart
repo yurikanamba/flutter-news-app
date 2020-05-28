@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/views/home.dart';
+import 'package:newsapp/views/loading.dart';
 
 //main function is the first function that fires when dart file starts
 void main() {
@@ -16,7 +17,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       //what widget should load on the home screen
-      home: Home(),
+//      home: Home(),
+      initialRoute: '/home',
+      routes: {
+        '/': (context) => Loading(),
+        '/home': (context) => Home(),
+      },
     );
   }
 }

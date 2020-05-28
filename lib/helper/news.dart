@@ -9,29 +9,38 @@ class News {
   List<ArticleModel> news = [];
 
   Future<void> getNews() async {
-    String url =
-        "http://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=ba6018a0c29b4508be8a24c16e933a85";
+    try {
+      String url =
+          "http://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=ba6018a0c29b4508be8a24c16e933a85";
 
-    var response = await http.get(url);
-    var jsonData = jsonDecode(response.body);
+      var response = await http.get(url);
+      var jsonData = jsonDecode(response.body);
 
-    if (jsonData['status'] == "ok") {
-      jsonData["articles"].forEach((element) {
-        if (element["urlToImage"] != null && element["description"] != null) {
-          //pass into Article Model Class
-          ArticleModel articleModel = ArticleModel(
-            title: element['title'],
-            author: element['author'],
-            description: element['description'],
-            url: element['url'],
-            urlToImage: element['urlToImage'],
-            content: element['context'],
-            source: element['source']['name'],
-            publishedAt: element['publishedAt'],
-          );
-          news.add(articleModel);
-        }
-      });
+      if (jsonData['status'] == "ok") {
+        jsonData["articles"].forEach((element) {
+          if (element["urlToImage"] != null && element["description"] != null) {
+            String datetime = element['publishedAt'];
+            DateTime now = DateTime.parse(datetime);
+            String convertDateTime = DateFormat.yMMMMEEEEd().format(now);
+            String stringDateTime = convertDateTime.toString();
+
+            //pass into Article Model Class
+            ArticleModel articleModel = ArticleModel(
+              title: element['title'],
+              author: element['author'],
+              description: element['description'],
+              url: element['url'],
+              urlToImage: element['urlToImage'],
+              content: element['context'],
+              source: element['source']['name'],
+              publishedAt: stringDateTime,
+            );
+            news.add(articleModel);
+          }
+        });
+      }
+    } catch (e) {
+      print('caught error: $e');
     }
   }
 }

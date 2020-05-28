@@ -9,6 +9,8 @@ import 'category_news.dart';
 import 'package:newsapp/models/article_model.dart';
 import 'package:newsapp/helper/news.dart';
 import 'article_view.dart';
+//spinner
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Home extends StatefulWidget {
   //override the class defined in Stateful Widget
@@ -51,7 +53,12 @@ class _HomeState extends State<Home> {
       body: _loading
           ? Center(
               child: Container(
-                child: CircularProgressIndicator(),
+                //loading spinner
+                child: SpinKitFadingCircle(
+                  color: Colors.teal,
+                  size: 50.0,
+                ),
+                //CircularProgressIndicator(),
               ),
             )
           : SingleChildScrollView(
@@ -118,6 +125,7 @@ class CategoryTile extends StatelessWidget {
             MaterialPageRoute(
                 builder: (context) => CategoryNews(
                       category: id,
+                      categoryName: categoryName,
                     )));
       },
       child: Container(
@@ -182,6 +190,7 @@ class NewsTile extends StatelessWidget {
                       articleUrl: url,
                     )));
       },
+      //maybe use cards to design each news tile
       child: Container(
         margin: EdgeInsets.only(bottom: 25),
         child: Column(
@@ -209,42 +218,61 @@ class NewsTile extends StatelessWidget {
                 color: Colors.grey[400],
               ),
             ),
-            SizedBox(
-              height: 8,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                alignment: Alignment.center,
-                width: 150,
-                height: 30,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  color: Colors.tealAccent[700],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                SizedBox(
+                  height: 8,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(0),
-                  child: Text(
-                    source,
-                    style: TextStyle(
-                        color: Colors.grey[900],
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 130,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      color: Colors.tealAccent[700],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(0),
+                      child: Text(
+                        source,
+                        style: TextStyle(
+                            color: Colors.grey[900],
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            )
-//            Text(
-//              source,
-//              style:
-//                  TextStyle(color: Colors.white, backgroundColor: Colors.green),
-//            ),
-//            Text(
-//              publishedAt,
-//              style: TextStyle(
-//                color: Colors.red,
-//              ),
-//            ),
+                SizedBox(
+                  height: 8,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 180,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      color: Colors.tealAccent[700],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(0),
+                      child: Text(
+                        publishedAt,
+                        style: TextStyle(
+                            color: Colors.grey[900],
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

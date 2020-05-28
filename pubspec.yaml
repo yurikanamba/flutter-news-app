@@ -32,6 +32,7 @@ dependencies:
   cached_network_image: ^2.2.0+1
   webview_flutter: ^0.3.22+1
   intl: ^0.16.1
+  flutter_spinkit: ^4.1.2
 
 dev_dependencies:
   flutter_test:
