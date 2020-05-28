@@ -11,6 +11,8 @@ import 'package:newsapp/helper/news.dart';
 import 'article_view.dart';
 //spinner
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+//firebase
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Home extends StatefulWidget {
   //override the class defined in Stateful Widget
@@ -228,14 +230,13 @@ class NewsTile extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Container(
                     alignment: Alignment.center,
-                    width: 130,
                     height: 30,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
                       color: Colors.tealAccent[700],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
                         source,
                         style: TextStyle(
@@ -253,14 +254,13 @@ class NewsTile extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Container(
                     alignment: Alignment.center,
-                    width: 180,
                     height: 30,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
                       color: Colors.tealAccent[700],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(0),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
                         publishedAt,
                         style: TextStyle(
