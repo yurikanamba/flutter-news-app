@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "311710112203",
+    "firebase_url": "https://arapp-dfda3.firebaseio.com",
+    "project_id": "arapp-dfda3",
+    "storage_bucket": "arapp-dfda3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311710112203:android:06cf3776056a8291abbe4e",
+        "android_client_info": {
+          "package_name": "yurikanamba.newsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311710112203-i5npcn1amvhqnsri2753johhm270qtsg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeu1IM_oh1OT14yTRocs-8g0N7I6G9ySE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311710112203-i5npcn1amvhqnsri2753johhm270qtsg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "311710112203-rp8nd7r0v2cpmmajpd1q8n23gl9v0p0u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "yurikanamba.newsapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

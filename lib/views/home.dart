@@ -1,6 +1,7 @@
 //import 'package:cached_network_image/cached_network_image.dart';
 //import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:newsapp/helper/auth.dart';
 //sources
 import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/helper/data.dart';
@@ -26,6 +27,8 @@ class _HomeState extends State<Home> {
 
   bool _loading = true;
 
+  final AuthService _auth = AuthService();
+
   @override
   void initState() {
     //whenever screen opens, functions in here will be called
@@ -48,9 +51,18 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TechInt ⌘ 💻', style: TextStyle(color: Colors.tealAccent)),
+        title: Text('TechInt⌘', style: TextStyle(color: Colors.tealAccent)),
         centerTitle: true,
         elevation: 0.0,
+        actions: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            onPressed: () async {
+              await _auth.signOut();
+            },
+            label: Text('logout', style: TextStyle(color: Colors.tealAccent)),
+          )
+        ],
       ),
       body: _loading
           ? Center(
@@ -220,12 +232,15 @@ class NewsTile extends StatelessWidget {
                 color: Colors.grey[400],
               ),
             ),
+            SizedBox(
+              height: 12,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                SizedBox(
-                  height: 8,
-                ),
+//                SizedBox(
+//                  height: 8,
+//                ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
@@ -236,9 +251,9 @@ class NewsTile extends StatelessWidget {
                       color: Colors.tealAccent[700],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        source,
+                        publishedAt,
                         style: TextStyle(
                             color: Colors.grey[900],
                             fontSize: 14,
@@ -247,6 +262,7 @@ class NewsTile extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 SizedBox(
                   height: 8,
                 ),
@@ -260,9 +276,9 @@ class NewsTile extends StatelessWidget {
                       color: Colors.tealAccent[700],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        publishedAt,
+                        source,
                         style: TextStyle(
                             color: Colors.grey[900],
                             fontSize: 14,

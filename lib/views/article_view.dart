@@ -17,7 +17,7 @@ class _ArticleViewState extends State<ArticleView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TechInt ⌘ 💻', style: TextStyle(color: Colors.tealAccent)),
+        title: Text('TechInt⌘', style: TextStyle(color: Colors.tealAccent)),
         centerTitle: true,
         elevation: 0.0,
       ),

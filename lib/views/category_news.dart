@@ -41,7 +41,7 @@ class _CategoryNews extends State<CategoryNews> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TechInt ⌘ 💻', style: TextStyle(color: Colors.tealAccent)),
+        title: Text('TechInt⌘', style: TextStyle(color: Colors.tealAccent)),
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -60,7 +60,19 @@ class _CategoryNews extends State<CategoryNews> {
               child: Container(
                 child: Column(
                   children: <Widget>[
-                    Text(widget.categoryName),
+                    Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(top: 15),
+                        height: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          color: Colors.tealAccent[700],
+                        ),
+                        child: Text(widget.categoryName,
+                            style: TextStyle(
+                                color: Colors.grey[900],
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600))),
                     Container(
                       padding: EdgeInsets.only(top: 16),
                       child: ListView.builder(
